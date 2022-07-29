@@ -1,0 +1,60 @@
+#Profile {
+  height: 200px;
+  width: 200px;
+  margin-left: 20px;
+}
+#Aval_Med {
+  height: 200px;
+  width: 260px;
+}
+#Settings {
+  height: 200px;
+  width: 200px;
+  margin-left: 20px;
+}
+#Logout {
+  height: 200px;
+  width: 200px;
+  margin-left: 20px;
+}
+.h {
+  border: 2px solid red;
+}
+
+#body {
+  width: 1190px;
+  padding-top: 80px;
+  /* border: 2px solid red; */
+  margin: auto;
+}
+
+#pbtn {
+  /* border: 2px solid red; */
+  margin: auto;
+}
+#mbtn {
+  /* border: 2px solid red; */
+  margin: auto;
+}
+#sbtn {
+  /* border: 2px solid red; */
+  margin: auto;
+}
+#lbtn {
+  /* border: 2px solid red; */
+  margin: auto;
+}
+
+/* ===================donor profile============================ */
+.abody {
+  width: 1000px;
+  height: max-content;
+  /* border: 2px solid red; */
+  margin: auto;
+  /* padding-top: 50px; */
+  text-align: center;
+}
+#headingprofile {
+  font-size: x-large;
+  color: red;
+}

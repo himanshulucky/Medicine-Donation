@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/List-the-Medecine.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/Login-SignUp.js"></script>
+    <script src="js/Setting.js"></script>
+    <script>
+        var moduleKuch = angular.module("myModule", []);
+        moduleKuch.controller("mycontroller", function ($scope, $http) {
+            $scope.jsonAry = [];
+
+            $scope.DonorMedManager = function () {
+                var emailid = document.getElementById("emailid").value;
+                // var url = "/DonorMedManager?emailid=" + emailid;
+                $http.get("/DonorMedManager?emailid=" + emailid).then(fxSuccess, fxpsuccess);
+                function fxpsuccess(response) {
+                    alert(JSON.stringify(response.data));
+                }
+                //    =======success==========
+                function fxSuccess(response) {
+                    alert(JSON.stringify(response.data));
+                    $scope.jsonAry = response.data;
+                }
+
+            }
+            $scope.doDelete = function (email, index) {
+                // alert(email+"  "+index);
+                if (confirm("R U Sure?") == false)
+                    return;
+
+                var url = "/profile-delete-angualr?emailDelete=" + email;
+                $http.get(url).then(fxAnmol, function (response) {
+                    alert(response.data);
+                });
+                function fxAnmol(response) {
+                    //alert(response.data);
+                    $scope.DonorMedManager();
+                }
+            }
+
+        })
+    </script>
+</head>
+
+<body ng-app="myModule" ng-controller="mycontroller">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1"> <a class="navbar-brand" href="#"><img src="pics2/logos.png" alt="" width="50"
+                                height="50"></a>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <p style="margin-top: 15px;  ">Admin Donor</p>
+                    </div>
+
+
+
+    </nav>
+    <center>
+        <input name="emailid" id="emailid" type="email">
+        <input type="button" value="DonorMedManager" ng-click=DonorMedManager();>
+    </center>
+    <!-- <center>
+        <table border="1" rules="all" width="800">
+            <tr bgcolor="yellow">
+                <th>Sr.No</th>
+                <th>Medicine</th>
+                <th>Packing</th>
+                <th>Quantity</th>
+                <th>Expire Date</th>
+                <th>company</th>
+                
+                <th>
+                    Delete
+                </th>
+            </tr>
+            <tr ng-repeat="obj in jsonAry">
+                <td>{{$index +1}}</td>
+                <td>{{obj.pic}}</td>
+                <td>{{obj.medecine}}</td>
+                <td>{{obj.packing}}</td>
+                <td>{{obj.qty}}</td>
+                <td>{{obj.expdate}}</td>
+                <td>{{obj.company}}</td>
+               
+                <td>
+                    <input type="button" value="Delete" ng-click=doDelete(obj.emailid,$index);>
+
+                </td>
+
+            </tr>
+        </table>
+    </center> -->
+
+    <center>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <div class="card mt-3" style="height: 100px;" ng-repeat="obj in jsonAry">
+                        <!-- <img src="..." class="card-img-top" alt="..."> -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-1"><img src="uploads/{{obj.pic}}" height="70px" width="70px" alt="">
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <center>{{obj.emailid}}</center>
+                                    </div>
+                                    <div class="row">
+                                        <center>{{obj.medecine}}</center>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <center>{{obj.company}}</center>
+                                        </div>
+                                        <div class="row">
+                                            <center>{{obj.qty}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4">
+                                        <div class="row">
+                                            <center>{{obj.packing}}</center>
+                                        </div>
+                                        <div class="row">
+                                            <center>{{obj.expdate}}</center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="button" value="Delete" ng-click=doDelete(obj.emailid,$index);>
+                                </div>
+                            </div>
+                            <!-- <h5 class="card-title">Card title</h5> -->
+                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the
+                                card's content.</p> -->
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Donor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/">
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/List-the-Medecine.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/Login-SignUp.js"></script>
+        <script src="js/Setting.js"></script>
+    <script>
+        function loadFile(ref) {
+            var image = document.getElementById('prev');
+            image.src = URL.createObjectURL(ref.files[0]);
+        };
+        function loadFiles(ref) {
+            var image = document.getElementById('prev2');
+            image.src = URL.createObjectURL(ref.files[0]);
+        };
+    </script>
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/Setting.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1"> <a class="navbar-brand" href="#"><img src="pics2/logos.png" alt="" width="50"
+                                height="50"></a>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <p style="margin-top: 15px;  ">Admin Donor</p>
+                    </div>
+
+
+
+    </nav>
+    <div class="abody">
+        <input type="hidden" id="hdn2" name="hdn2"><input type="hidden" id="hdn" name="hdn">
+        <form class="row g-3" enctype="multipart/form-data" method="post">
+            <div class="col-md-12">
+                <label class="form-label" id="headingprofile"><b> Donor Profile</b></label>
+            </div>
+            <div class="col-md-7">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="pdemail" id="pdemail">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <input type="button" class="form-control" name="pdpassword" id="pdpassword" value="Search">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" name="pdname" id="pdname">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" name="pdnumber" id="pdnumber">
+            </div>
+            <div class="col-8">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" name="pdaddress" id="pdaddress" placeholder="1234 Main St">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" id="pdcity" name="pdcity">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Select ID Proof</label>
+                <input type="text" class="form-control" id="pdidproof" name="pdidproof" value="himanshu jindal">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Contact Time</label>
+                <input type="text" class="form-control" id="pdtime" name="pdtime" value="5-9-8">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Select ID </label>
+
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Select Profile Pic</label>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <input type="file" name="pdprofile" id="pdprofile" onchange="loadFile(this);">
+                </div>
+                <div class="col-md-6">
+                    <input type="file" name="pdprofiles" id="pdprofiles" onchange="loadFiles(this);">
+                </div>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <img id="prev" src="" width="100" height="100" alt="">
+                </div>
+                <div class="col-md-6">
+                    <img id="prev2" src="" width="100" height="100" alt="">
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <button type="submit" formaction="/donorprofile-process" class="btn btn-primary">Save</button>
+                <button type="submit" formaction="/donorprofile-process-update" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
