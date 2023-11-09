@@ -28,6 +28,7 @@ $(document).ready(function () {
         else if (jsonary[0].utype == "Needy")
           window.location.replace("/needy-dash.html");
       }
+      // hare krsna
     });
   });
 });
